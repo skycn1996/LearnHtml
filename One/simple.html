@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <style type="text/css">
+    /* 使用通配符选择器，意思是设置所有标签元素的内外边距均为0 */
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* 去掉列表前面的编号样式，如小黑圆点等 */
+    ul{
+        list-style: none;
+    }
+
+    a{
+    /* 去掉超链接文字默认的下划线 */
+        text-decoration: none;
+    /* 设置超链接文字的默认颜色为黑色 */
+        color: black;
+    }
+
+    .wrap{
+        width: 1026px;
+    /* 设置盒子水平方法居中 */
+        margin: 0 auto;
+    }
+    
+    /* 顶部导航 */
+    .top{
+    /* 控制顶部区域高度 */
+        height: 60px;
+    /* 技巧：设置行高与高度相等，则，区域内容自动在垂直方向居中显示 */
+        line-height: 60px;
+        border-bottom: 1px solid #ebebeb;
+    }
+    .top_left{
+    /* 设置左区域向左浮动 */
+        margin-left: 55px;
+        float: left;
+    }
+    .top_left > img{
+    /* 图片在垂直方向居中显示 */
+        vertical-align: middle;
+    }
+    .top_right{
+    /* 设置右边区域向左浮动 */
+        float: left;
+    /* 增加距离左边区域的距离 */
+        margin-left: 207px;
+    }
+
+    /* 控制每一项列表项的样式 */
+    .top_right > li{
+        /* 控制每一列表项横向排列 */
+        display: inline-block;
+        /* 控制每一项内容水平方向居中 */
+        text-align: center;
+        /* 设置每一项宽度与高度值 */
+        width: 68px;
+        height: 100%;
+        /* 增大每一项右边的距离值 */
+        margin-right: 76px; 
+    }
+    /* 设置选中列表项的样式 */
+    .active{
+    /* 设置边框样式，border-bottom为复合属性，里面可以设置多样值
+    边框粗细：4px
+    边框类型：solid(实心线型)
+    边框颜色：#0188fb(蓝色) */
+    border-bottom:4px solid #0188fb;
+    }
+    /* 当选中的时候，样式值是acitve下的li里面的a标签内的文字颜色发生变化 */
+    .active > a{
+    color:#0188fb;
+    }
+    /* 中间内容 */
+    /* 控制列表盒子距离顶部的距离 */
+    .main{
+    margin-top: 95px;   
+    }
+    /* 控制列表每一项的样式 */
+    .main li{
+    /* 控制每一项向左对齐 */
+    float: left;
+    /* 设置每一项的宽度 */
+    width:342px;
+    /* 设置每一项里面的内容水平方向居中 */
+    text-align: center;
+    }
+
+    .img-box{
+    /* 技巧：采用父相子绝规则，控制儿子在此盒子中的位置，解析往下看 */
+    position: relative;
+    /* 控制此盒子宽度与父级元素一样宽 */
+    width: 100%;
+    /* 控制此盒子的高度 */
+    height: 259px;
+
+    }
+    .img{
+    /* 设置此图片为绝对定位 */
+    position: absolute;
+    /* 设置此盒子距离上方一定距离 */
+    top: 53px;
+    /* 设置此盒子的高度与宽度 */
+    height: 109px;
+    width: 100%;
+    /*设置此盒子的背景图片，background是一个复合属性，包含多个属性值
+    url：图片来源
+    no-repeat：背景图片不重复
+    center：背景图片在盒子里面水平垂直居中
+    contain：背景图片每一个部分都包含在盒子里面 */
+    background: url("https://qd.myapp.com/myapp/qqteam/TIM_WEB/img/TIM_PC/windows.png")
+    no-repeat center/contain
+    ;
+    /* 设置图片动画参数，如果有的动画转变，则全部属性值过渡时间为0.5秒 */
+    transition: all 0.5s; 
+
+    }
+    .main > li:nth-child(2) .img{
+    background: url("https://qd.myapp.com/myapp/qqteam/TIM_WEB/img/TIM_PC/iphone.png")
+    no-repeat center/contain
+    ;}
+    .main >li:nth-child(2):hover .img{
+    /* 当前图片盒子会产生动画效果，向下移动19px */
+    transform: translateY(19px);
+    /* 改变背景图片来源 */
+    background: url("")
+    no-repeat center/contain;       }
+
+    .main > li:nth-child(3) .img{
+                background: url("https://qd.myapp.com/myapp/qqteam/TIM_WEB/img/TIM_PC/android.png")
+                no-repeat center/contain
+;}
+    .main >li:nth-child(2):hover .img{
+    /* 当前图片盒子会产生动画效果，向下移动19px */
+    transform: translateY(19px);
+    /* 改变背景图片来源 */
+    background: url("https://qd.myapp.com/myapp/qqteam/TIM_WEB/img/TIM_PC/iphone-hover2x.png")
+    no-repeat center/contain
+    ;       
+    }
+    .main >li:nth-child(3):hover .img{
+    /* 当前图片盒子会产生动画效果，向下移动19px */
+    transform: translateY(19px);
+    /* 改变背景图片来源 */
+    background: url("https://qd.myapp.com/myapp/qqteam/TIM_WEB/img/TIM_PC/iphone-hover2x.png")
+    no-repeat center/contain
+    ;       }
+
+/* 当鼠标移到列表每一项的时候 */
+  .main >li:hover{
+/* 背景图片来源发生变化 */
+background: url("https://qd.myapp.com/myapp/qqteam/TIM_WEB/img/TIM_PC/01.png") no-repeat center/cover;
+/* 产生阴影效果，阴影效果是复合属性，
+    0px：阴影距离x轴距离为0；
+    8px：阴影距离y轴距离为0；
+    25px：模糊值，模糊值越大，边缘越模糊，模糊值越小,则边缘越清晰。
+    rgba(0,0,0,0.1) rgb颜色，前面三个取值范围为(0-255),
+    第一个0代表红色值，第二个代表绿色，第三个代表蓝色
+    最后一个是透明值，取值范围为0-1，越靠近0，则颜色越淡，越靠近1，颜色越深。 */
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.1);
+    }
+    /* 当鼠标与移动到每一项的时候，当前项的图片盒子的样式发生变化 */
+    .main > li:hover .img{
+    /* 当前图片盒子会产生动画效果，向下移动19px */
+    transform: translateY(19px);
+    /* 改变背景图片来源 */
+    background: url("https://qd.myapp.com/myapp/qqteam/TIM_WEB/img/TIM_PC/windows-hover.png")
+        no-repeat center/contain;       }
+
+    /* 控制列表下的标题与版本信息里面内容在水平方向居中
+    当两个标签共用同一种样式的时候，我们可以使用逗号将他们合并起来
+             */
+    .main h2,p{
+        text-align: center;
+    }
+    /* 增大列表项的标题距离下面标签的值 */
+    .main h2{
+        margin-bottom: 7px;
+            }
+    /* 增大列表项的版本内容距离下面内容的值 */
+    .main p{
+        margin-bottom: 27px;
+    }
+    /* 修改按钮样式 */
+    .btn{
+        /* 将行内元素span转换为行内-块级元素，因为这样，才能设置元素的内边距 */
+        display: inline-block;
+        padding: 9px 38px;
+        color: rgb(190, 27, 27);
+        background-color: #0188FB;
+        margin-bottom:23px;}
+    /* 修改日记内容超链接文字的颜色 */
+    .log >a{
+        color: #0188FB;
+            }
+    /* 当鼠标移到日记内容超链接文字的时候，给超链接文字增加下划线 */
+    .log >a:hover{
+        border-bottom: 1px solid #0188FB;
+            }
+
+    /* 页脚部分 */  
+    .foot{
+     /* 页脚前面的兄弟设置浮动，这里也要设置浮动，否则，页面部分会飘浮上去的。 */
+        float: left;
+        margin-top: 76px; 
+    /* 设置宽度为100%，与屏幕一样宽 */
+        width: 100%;
+        background-color: #ebebeb;
+    }
+    .foot >p{
+    /* 控制文字大小 */
+    font-size: 14px;
+    }
+/*  采用子元素选择器，选中脚步区域第一个p元素。
+    .foot > p 返回的是脚步区域p元素的集合
+     :nth-child(1) 返回集合中的第几个子元素 */
+    .foot > p:nth-child(1){
+        /* 设置内容居中 */
+         text-align: center;
+         margin-top: 56px;
+         margin-bottom: 16px;
+          }
+     .foot > p:nth-child(2){
+        margin-bottom: 47px;
+        }
+/*      采用伪类选择器，给span 元素后面增加一条线条
+        注意以下两点，否则创建失败：
+        1.必须把span转换成inline-block类型或者block类型
+        2.必须添加content 内容属性 */   
+    span:after{
+        display: inline-block;
+        content: "";
+        height:15px ;
+        width: 2px;
+        margin-left: 10px;
+        margin-right: 10px;
+        background-color: rgb(88, 36, 36);          
+    }
+
+    </style>
+</head>
+<body>
+    <!-- 外面大盒子 -->
+    <div class="box">
+        <div class="wrap">
+            <!-- 顶部区域 -->
+            <div class="top">
+                <!-- 顶部左边区域 -->
+                <div class="top_left">
+                    <!-- 图片logo -->
+                    <img src="img/logo.jpg" alt="logo">
+                    <!-- logo区域文字 -->
+                    <span>TIM</span>
+                </div>
+                <!-- 右边导航栏区域 -->
+                <ul class="top_right">
+                    <!-- 每一项使用li标签描述 -->
+                    <li><a href="#">首页</a></li>
+                    <li class="active"><a href="#">下载</a></li>
+                    <li><a href="#">支持</a></li>
+                </ul>           
+            </div>
+            <!-- 主要内容盒子 -->
+            <ul class="main">
+                <!-- 内容盒子的每一项 -->
+                <li>
+                    <!-- 技巧：想要更好地设置图片大小，最好在图片标签外面增加一层，控制外面盒子的带下
+                    然后设置图片的宽高为100% -->
+                    <div class="img-box">
+                        <div class="img"></div>
+                    </div>
+                    <h2>Windows版</h2>
+                    <p>版本2.3.2 2019-08-21</p>
+                    <!-- 给span标签添加class样式，方便接下来控制为按钮样式 -->
+                    <span class="btn">下载</span>
+                    <p class="log" ><a href="#">更新日记</a></p>
+                </li>
+                <li>
+                    <!-- 技巧：想要更好地设置图片大小，最好在图片标签外面增加一层，控制外面盒子的带下
+                    然后设置图片的宽高为100% -->
+                    <div class="img-box">
+                        <div class="img"></div>
+                    </div>
+                    <h2>IPhone版</h2>
+                    <p>版本3.3.2 2019-08-22</p>
+                    <!-- 给span标签添加class样式，方便接下来控制为按钮样式 -->
+                    <span class="btn">下载</span>
+                    <p class="log" ><a href="#">更新日记</a></p>
+                </li>
+                <li>
+                    <!-- 技巧：想要更好地设置图片大小，最好在图片标签外面增加一层，控制外面盒子的带下
+                    然后设置图片的宽高为100% -->
+                    <div class="img-box">
+                        <div class="img"></div>
+                    </div>
+                    <h2>Android版</h2>
+                    <p>版本4.3.2 2019-08-23</p>
+                    <!-- 给span标签添加class样式，方便接下来控制为按钮样式 -->
+                    <span class="btn">下载</span>
+                    <p class="log" ><a href="#">更新日记</a></p>
+                </li>
+            </ul>
+        </div>
+        <div class="foot">
+            <p>
+                <a href="#"><span>用户协议</span></a>
+                <span>TIM意见反馈：274281820（QQ群）</span>
+                <span>TIM在线文档反馈：303702904（QQ群）</span>       
+            </p>
+            <p>aaa</p>
+            <br>
+            <p>bbb</p>
+            <hr>
+            <p>
+        Copyright © 1998-2020 Tencent. All Rights Reserved. 腾讯公司 版权所有
+            </p>
+        </div>
+    </div>
+</body>
+</html>
